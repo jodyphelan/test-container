@@ -3,16 +3,15 @@ FROM mcr.microsoft.com/devcontainers/miniconda:0-3
 # Copy environment.yml (if found) to a temp location so we update the environment. Also
 # copy "noop.txt" so the COPY instruction does not fail if no environment.yml exists.
 
-# RUN /opt/conda/bin/conda config --add channels defaults  \
-#     && /opt/conda/bin/conda config --add channels bioconda \
-#     && /opt/conda/bin/conda config --add channels conda-forge \
-#     && /opt/conda/bin/conda config --set channel_priority strict \
-#     && /opt/conda/bin/conda config --set solver libmamba 
+RUN /opt/conda/bin/conda config --add channels defaults  \
+    && /opt/conda/bin/conda config --add channels bioconda \
+    && /opt/conda/bin/conda config --add channels conda-forge \
+    && /opt/conda/bin/conda config --set channel_priority strict \
+    && /opt/conda/bin/conda config --set solver libmamba 
 
 # COPY .devcontainer/mapping/env.txt /tmp/conda-tmp/
 
-# RUN if [ -f "/tmp/conda-tmp/env.txt" ]; then umask 0002 && /opt/conda/bin/conda create --name mapping --file /tmp/conda-tmp/env.txt; fi \
-#     && rm -rf /tmp/conda-tmp
+RUN /opt/conda/bin/conda create --name mapping --file .devcontainer/mapping/env.txt
 
 
 # cd to /workspaces
