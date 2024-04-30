@@ -9,9 +9,9 @@ RUN /opt/conda/bin/conda config --add channels defaults  \
     && /opt/conda/bin/conda config --set channel_priority strict \
     && /opt/conda/bin/conda config --set solver libmamba 
 
-# COPY .devcontainer/mapping/env.txt /tmp/conda-tmp/
+COPY .devcontainer/mapping/env.txt /tmp/conda-tmp/
 
-RUN /opt/conda/bin/conda create --name mapping --file .devcontainer/mapping/env.txt
+RUN /opt/conda/bin/conda create --name mapping --file /tmp/conda-tmp/env.txt
 
 
 # cd to /workspaces
