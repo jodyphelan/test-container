@@ -1,14 +1,11 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/miniconda
 {
-	"name": "Mapping",
+	"name": "Miniconda (Python 3)",
 	"build": { 
 		"context": "..",
 		"dockerfile": "Dockerfile"
 	}
-	// "features": {
-	// 	"ghcr.io/devcontainers/features/desktop-lite:1": {}
-	// }
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
