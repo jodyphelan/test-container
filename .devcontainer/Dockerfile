@@ -6,11 +6,11 @@ COPY environment.yml* .devcontainer/noop.txt /tmp/conda-tmp/
 RUN if [ -f "/tmp/conda-tmp/environment.yml" ]; then umask 0002 && /opt/conda/bin/conda env update -n base -f /tmp/conda-tmp/environment.yml; fi \
     && rm -rf /tmp/conda-tmp
 
-RUN conda config --add channels defaults  \
-    && conda config --add channels bioconda \
-    && conda config --add channels conda-forge \
-    && conda config --set channel_priority strict \
-    && conda config --set solver libmamba
+RUN /opt/conda/bin/conda config --add channels defaults  \
+    && /opt/conda/bin/conda config --add channels bioconda \
+    && /opt/conda/bin/conda config --add channels conda-forge \
+    && /opt/conda/bin/conda config --set channel_priority strict \
+    && /opt/conda/bin/conda config --set solver libmamba
 
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get install -y firefox-esr
